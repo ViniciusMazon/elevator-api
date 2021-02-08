@@ -1,9 +1,30 @@
-import express from 'express';
+import express, { json, request, response } from 'express';
 import cors from 'cors';
 
-const app = express();
+import routes from './Routes';
+class App {
+  public express: express.Application;
 
-app.use(cors());
-app.use(express.json());
+  constructor() {
+    this.express = express();
+    this.middlewares();
+    this.routes();
+  }
 
-export default app;
+  middlewares() {
+    this.express.use(cors());
+    this.express.use(json());
+  }
+
+  routes() {
+    this.express.use(routes.router);
+  }
+
+  init() {
+    this.express.listen(process.env.PORT || 3333, () =>
+      console.log('⚡ Server is running')
+    );
+  }
+}
+
+export default new App();
