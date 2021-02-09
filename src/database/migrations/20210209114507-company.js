@@ -2,16 +2,16 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.createTable('User', {
+    return queryInterface.createTable('Company', {
+      id: Sequelize.STRING,
       name: Sequelize.STRING,
-      last_name: Sequelize.STRING,
+      cnpj: Sequelize.STRING,
       email: Sequelize.STRING,
       hash_password: Sequelize.STRING,
-      role: Sequelize.ENUM('developer', 'designer', 'company'),
     });
   },
 
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('User');
+    return queryInterface.dropTable('Company');
   },
 };
