@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { createCompanyController } from './app/useCases/CreateCompany';
+import { createProfessionalController } from './app/useCases/CreateProfessional';
 
 class Routes {
   router = Router();
@@ -13,6 +14,10 @@ class Routes {
 
     this.router.post('/sing-up/company', (request, response) => {
       return createCompanyController.handle(request, response);
+    });
+
+    this.router.post('/sing-up/professional', (request, response) => {
+      return createProfessionalController.handle(request, response);
     });
   }
 }
