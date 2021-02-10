@@ -1,4 +1,4 @@
 import 'dotenv/config';
-import App from './App';
+import app from './App';
 
-App.init();
+app.init();
