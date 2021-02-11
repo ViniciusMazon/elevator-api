@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { createCompanyController } from './app/useCases/CreateCompany';
 import { createProfessionalController } from './app/useCases/CreateProfessional';
+import { authenticateController } from './app/useCases/Authenticate';
 
 class Routes {
   router = Router();
@@ -18,6 +19,10 @@ class Routes {
 
     this.router.post('/sing-up/professional', (request, response) => {
       return createProfessionalController.handle(request, response);
+    });
+
+    this.router.post('/authenticate', (request, response) => {
+      return authenticateController.handle(request, response);
     });
   }
 }
