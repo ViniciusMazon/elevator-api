@@ -9,6 +9,9 @@
     "build": "tsc",
     "commit": "git-cz"
   },
+  "engines": {
+    "node": "14.x"
+  },
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",
     "@types/cors": "^2.8.9",
