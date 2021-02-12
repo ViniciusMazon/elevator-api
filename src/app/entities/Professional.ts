@@ -6,7 +6,7 @@ export class Professional {
   public lastname!: string;
   public email!: string;
   public password!: string;
-  public hash_password!: string;
+  public hash_password?: string;
   public role!: string;
 
   constructor(props: Omit<Professional, 'id'>, id?: string) {

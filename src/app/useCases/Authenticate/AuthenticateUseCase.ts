@@ -19,21 +19,14 @@ export class AuthenticateUseCase {
 
     const passwordIsValid = await this.authenticateRepository.validatePassword(
       data.password,
-      user.hash_password
+      user.hash_password || ''
     );
 
     if (!passwordIsValid) {
       throw new Error('User or password mismatch');
     }
 
-    const {
-      hash_password,
-      createdAt,
-      updatedAt,
-      ...publicData
-    } = user.dataValues;
-
-    const authorization = this.authenticateRepository.sign(publicData.id, publicData);
+    const authorization = this.authenticateRepository.sign(user);
 
     return authorization;
   }

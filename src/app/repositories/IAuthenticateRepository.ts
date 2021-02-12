@@ -9,5 +9,5 @@ export interface ISignType {
 export interface IAuthenticateRepository {
   findByEmail(email: string): Promise<Company | Professional | null>;
   validatePassword(password: string, hash_password: string): Promise<Boolean>;
-  sign(id: String, publicData: Object): ISignType;
+  sign(user: Company | Professional): ISignType;
 }

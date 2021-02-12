@@ -13,7 +13,8 @@ class Authorization {
 
     try {
       const [, token] = requestHeader.split(' ');
-      jwt.verify(token, process.env.JWT_SECRET);
+      const secret = process.env.JWT_SECRET;
+      jwt.verify(token, String(secret));
       return next();
     } catch (err) {
       console.error(err);
