@@ -3,5 +3,6 @@ export interface ICreateProfessionalRequestDTO {
   lastname: string;
   email: string;
   password: string;
+  hash_password?: string;
   role: string;
 }
