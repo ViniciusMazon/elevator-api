@@ -13,7 +13,7 @@ export class AuthenticateController {
 
     try {
       const token = await this.authenticateUseCase.execute({ email, password });
-      return response.status(200).json({ token });
+      return response.status(200).json(token);
     } catch (err) {
       console.log(err);
       return response.status(400).json({
