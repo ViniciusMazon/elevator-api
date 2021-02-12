@@ -28,18 +28,14 @@ export class AuthenticateRepository implements IAuthenticateRepository {
     return result;
   }
 
-  sign(id: string, name: string, role: string): ISignType {
+  sign(id: String, publicData: Object): ISignType {
     const token = jwt.sign({ id: id }, process.env.JWT_SECRET, {
       expiresIn: '7d',
     });
 
     const authorization = {
       token: `Bearer ${token}`,
-      user: {
-        id,
-        name,
-        role,
-      },
+      user: publicData,
     };
 
     return authorization;

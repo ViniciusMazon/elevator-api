@@ -26,11 +26,14 @@ export class AuthenticateUseCase {
       throw new Error('User or password mismatch');
     }
 
-    const authorization = this.authenticateRepository.sign(
-      user.id,
-      user.name,
-      'developer'
-    );
+    const {
+      hash_password,
+      createdAt,
+      updatedAt,
+      ...publicData
+    } = user.dataValues;
+
+    const authorization = this.authenticateRepository.sign(publicData.id, publicData);
 
     return authorization;
   }
