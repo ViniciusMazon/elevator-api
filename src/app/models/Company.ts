@@ -1,7 +1,6 @@
 import Sequelize from 'sequelize';
 import bcrypt from 'bcrypt';
 import database from '../../database/connection';
-
 class Company extends Sequelize.Model {
   public id!: string;
   public name!: string;
