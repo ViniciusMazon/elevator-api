@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { createCompanyController } from './app/useCases/CreateCompany';
 import { createProfessionalController } from './app/useCases/CreateProfessional';
 import { authenticateController } from './app/useCases/Authenticate';
+import { createOpportunityController } from './app/useCases/CreateOpportunity';
 
 import authorization from './app/middlewares/Authorization';
 
@@ -32,6 +33,15 @@ class Routes {
       (request, response, next) =>
         authorization.handle(request, response, next),
       (request, response) => response.json({ ok: true })
+    );
+
+    this.router.post(
+      '/opportunity',
+      (request, response, next) =>
+        authorization.handle(request, response, next),
+      (request, response) => {
+        return createOpportunityController.handle(request, response);
+      }
     );
   }
 }

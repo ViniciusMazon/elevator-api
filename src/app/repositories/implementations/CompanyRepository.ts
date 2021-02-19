@@ -11,6 +11,14 @@ export class CompanyRepository implements ICompanyRepository {
     return company;
   }
 
+  async findById(id: string): Promise<Company | null> {
+    const company = await CompanyModel.findOne({
+      where: { id: id },
+    });
+
+    return company;
+  }
+
   async save(company: Company): Promise<void> {
     console.log(company);
     await CompanyModel.create(company);
