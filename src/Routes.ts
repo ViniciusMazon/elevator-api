@@ -1,8 +1,9 @@
-import { Router } from 'express';
+import { request, response, Router } from 'express';
 import { createCompanyController } from './app/useCases/CreateCompany';
 import { createProfessionalController } from './app/useCases/CreateProfessional';
 import { authenticateController } from './app/useCases/Authenticate';
 import { createOpportunityController } from './app/useCases/CreateOpportunity';
+import { applyForOpportunityController } from './app/useCases/ApplyForOpportunity';
 
 import authorization from './app/middlewares/Authorization';
 
@@ -41,6 +42,15 @@ class Routes {
         authorization.handle(request, response, next),
       (request, response) => {
         return createOpportunityController.handle(request, response);
+      }
+    );
+
+    this.router.post(
+      '/apply-for-opportunity',
+      (request, response, next) =>
+        authorization.handle(request, response, next),
+      (request, response) => {
+        return applyForOpportunityController.handle(request, response);
       }
     );
   }

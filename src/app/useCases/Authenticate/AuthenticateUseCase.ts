@@ -1,5 +1,3 @@
-import { Company } from '../../entities/Company';
-import { Professional } from '../../entities/Professional';
 import { IAuthenticateRepository } from '../../repositories/IAuthenticateRepository';
 import { IAuthenticateRequestDTO } from './AuthenticateDTO';
 
@@ -33,7 +31,10 @@ export class AuthenticateUseCase {
       ...publicData
     } = user.dataValues;
 
-    const authorization = this.authenticateRepository.sign(publicData.id, publicData);
+    const authorization = this.authenticateRepository.sign(
+      publicData.id,
+      publicData
+    );
 
     return authorization;
   }

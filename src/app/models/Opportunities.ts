@@ -1,6 +1,5 @@
 import Sequelize from 'sequelize';
 import database from '../../database/connection';
-
 class Opportunities extends Sequelize.Model {
   public id!: string;
   public videoURL!: string;

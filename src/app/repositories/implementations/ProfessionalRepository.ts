@@ -11,6 +11,14 @@ export class ProfessionalRepository implements IProfessionalRepository {
     return professional;
   }
 
+  async findById(id: string): Promise<Professional | null> {
+    const professional = await ProfessionalModel.findOne({
+      where: { id: id },
+    });
+
+    return professional;
+  }
+
   async save(professional: Professional): Promise<void> {
     await ProfessionalModel.create(professional);
   }
